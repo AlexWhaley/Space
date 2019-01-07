@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class ObjectPool<T> where T : ObjectPoolItem, new()
+public class ObjectPool<T> where T : PoolObject, new()
 {
     [SerializeField]
     private GameObject _objectPrefab;
@@ -11,7 +11,7 @@ public class ObjectPool<T> where T : ObjectPoolItem, new()
     [SerializeField]
     private int _quanitityOfInstancesOnStart = 0;
 
-    private List<T> _objectPool = new List<T>(16);
+    private List<T> _objectPool = new List<T>(64);
 
     public T Get()
     {
@@ -26,11 +26,21 @@ public class ObjectPool<T> where T : ObjectPoolItem, new()
             poolItem = new T();
             poolItem.Initialise(_objectPrefab, _poolParent);
         }
+
+        poolItem.FetchedFromPool();
         return poolItem;
     }
 
     public void Return(T poolItem)
     {
-        _objectPool.Add(poolItem);
+        if (!_objectPool.Contains(poolItem))
+        {
+            poolItem.ReturnedToPool();
+            _objectPool.Add(poolItem);
+        }
+        else
+        {
+            Debug.Log("Cannot return an object to the pool that is already inside the pool.");
+        }
     }
 }

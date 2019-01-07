@@ -34,6 +34,6 @@ public class ObjectPoolManager : MonoBehaviour
 }
 
 [System.Serializable]
-public class AsteroidObjectPool : ObjectPool<AsteroidData>
+public class AsteroidObjectPool : ObjectPool<Asteroid>
 {
 }

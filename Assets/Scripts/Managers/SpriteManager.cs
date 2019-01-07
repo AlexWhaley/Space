@@ -96,4 +96,13 @@ public class SpriteManager : MonoBehaviour
                 return null;
         }
     }
+
+    public Sprite GetRandomAsteroidSprite(ObstacleColour colour)
+    {
+        int randomSpriteIndex = Random.Range(0, _blueAsteroidSprites.Count);
+
+        return colour == ObstacleColour.Blue
+            ? _blueAsteroidSprites[randomSpriteIndex]
+            : _yellowAsteroidSprites[randomSpriteIndex];
+    }
 }

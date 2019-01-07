@@ -2,22 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidController : MonoBehaviour
+public class AsteroidController : ObstacleController
 {
-    private SpriteRenderer _spriteRenderer;
-    private Rigidbody2D _rigidBody;
-
-    private void Awake()
+    public override void SetColour(ObstacleColour colour)
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _rigidBody = GetComponent<Rigidbody2D>();
+        base.SetColour(colour);
+        _spriteRenderer.sprite = SpriteManager.Instance.GetRandomAsteroidSprite(_colour);
     }
     
     public void Fire(Vector3 startPosition, Vector3 velocity)
     {
-    }
-
-    private void Explode()
-    {
+        transform.position = startPosition;
+        _rigidBody.velocity = velocity;
     }
 }

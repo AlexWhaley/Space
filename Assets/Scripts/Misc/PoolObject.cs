@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ObjectPoolItem
+public class PoolObject
 {
     private GameObject _object;
 
@@ -15,9 +15,9 @@ public class ObjectPoolItem
 
     protected virtual void PostInitialise() { }
 
-    protected virtual void FetchedFromPool() { }
+    public virtual void FetchedFromPool() { }
 
-    protected virtual void ReturnedToPool() { }
+    public virtual void ReturnedToPool() { }
 
     protected GameObject Object
     {

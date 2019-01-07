@@ -46,16 +46,7 @@ public class LevelSpawnerController : MonoBehaviour
     private List<PlanetData> _bigPlanetPool;
 
     private Transform _cameraTransform;
-
     private Coroutine _sectionSpawnRoutine;
-
-    [Header("Asteroids")]
-    [SerializeField]
-    private GameObject _asteroidPrefab;
-    [SerializeField]
-    private List<Sprite> _asteroidBlueSprites;
-    [SerializeField]
-    private List<Sprite> _asteroidYellowSprites;
 
     // Additional Connecting Obstacles
     public enum ConnectingObstacleType
@@ -93,7 +84,7 @@ public class LevelSpawnerController : MonoBehaviour
         _maxSpawnYDistancePlanets = _verticalScreenSpace * _maxSpawnYDistanceScreenPercentage;
 
         // + 2 -> one for interaction on either side of the maximum poissible on screen planets.
-        _maxPlanetCount = (int)(1.0f / _minSpawnYDistanceScreenPercentage) + 2;
+        _maxPlanetCount = (int)(1.0f / _minSpawnYDistanceScreenPercentage) + 3;
 
         CreatePlanetPools();
 
@@ -147,6 +138,12 @@ public class LevelSpawnerController : MonoBehaviour
         planet.PlanetController.Initialise(_currentPlanetSpawnLocation, SpriteManager.Instance.GetRandomPlanetSprite());
 
         _planetList.Add(planet);
+        
+        var previousPlanetPosition = _planetList[_planetList.Count - 2].PlanetObject.transform.position;
+        var spawnPosition = (previousPlanetPosition + _currentPlanetSpawnLocation) / 2;
+        var planetPath = _currentPlanetSpawnLocation - previousPlanetPosition;
+        
+        var asteroidSpawner = new AsteroidSpawner(spawnPosition, planetPath, true, 15.0f,2.5f);
     }
 
     // Returns how much Y was changed since the last small star location

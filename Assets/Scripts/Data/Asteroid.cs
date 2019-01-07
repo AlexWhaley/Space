@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidSpawnerController : MonoBehaviour
+[System.Serializable]
+public class Asteroid : Obstacle<AsteroidController>
 {
-
 }
