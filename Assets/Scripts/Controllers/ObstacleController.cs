@@ -27,6 +27,7 @@ public class ObstacleController : MonoBehaviour
     public void HideObstacle()
     {
         _rigidBody.velocity = Vector2.zero;
+        _rigidBody.inertia = 0.0f;
         _rigidBody.collisionDetectionMode = CollisionDetectionMode2D.Discrete;
         _collider2D.enabled = false;
         _spriteRenderer.color = Color.clear;
@@ -37,5 +38,34 @@ public class ObstacleController : MonoBehaviour
         _rigidBody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         _collider2D.enabled = true;
         _spriteRenderer.color = _originalSpriteColour;
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        int triggerLayer = other.gameObject.layer;
+        
+        if (triggerLayer == PhysicsLayers.Shield)
+        {
+            if (other.gameObject.GetComponentInParent<ShipController>().CurrentShieldColour == _colour)
+            {
+                HideObstacle();
+            }
+        }
+        else if (triggerLayer == PhysicsLayers.PlayerObstacle)
+        {
+            other.gameObject.GetComponentInParent<ShipController>().DestroyPlayer();
+        }
+    }
+    
+
+    public ObstacleColour Colour
+    {
+        get { return _colour; }
+    }
+
+    public void CollideWithPlayer()
+    {
+       // Spawn collision elements
+       HideObstacle();
     }
 }

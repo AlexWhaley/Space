@@ -143,7 +143,7 @@ public class LevelSpawnerController : MonoBehaviour
         var spawnPosition = (previousPlanetPosition + _currentPlanetSpawnLocation) / 2;
         var planetPath = _currentPlanetSpawnLocation - previousPlanetPosition;
         
-        var asteroidSpawner = new AsteroidSpawner(spawnPosition, planetPath, true, 15.0f,2.5f);
+        var asteroidSpawner = new AsteroidSpawner(spawnPosition, planetPath, true, 10.0f,1.0f);
     }
 
     // Returns how much Y was changed since the last small star location

@@ -14,7 +14,6 @@ public class ShipController : MonoBehaviour
         }
     }
 
-    [SerializeField]
     private Rigidbody2D _playerRB;
     public Transform PlayerTransform
     {
@@ -39,15 +38,10 @@ public class ShipController : MonoBehaviour
     private Color _trailStartYellow;
     private Color _trailEndYellow;
 
-    public enum ShieldState
-    {
-        Blue,
-        Yellow
-    }
-    private ShieldState _currentShieldState = ShieldState.Blue;
+    private ObstacleColour _currentShieldColour = ObstacleColour.Blue;
 
     private bool _canSwipeMove = true;
-    private Coroutine _shipOrbitCoroutine = null;
+    private Coroutine _shipOrbitCoroutine;
     
     // Constants
     private const string kSetBlueShieldState = "SetBlueState";
@@ -55,6 +49,9 @@ public class ShipController : MonoBehaviour
     private const string kActivateBlueShield = "UseBlueShield";
     private const string kActivateYellowShield = "UseYellowShield";
     private const float kDegreesInACircle = 360.0f;
+
+    [SerializeField] private GameObject _shipObject;
+    [SerializeField] private ColliderObject _orbitCollider;
     
     private void Awake()
     {
@@ -67,7 +64,13 @@ public class ShipController : MonoBehaviour
         {
             // If the singleton hasn't been initialized yet
             _instance = this;
+            Initialise();
         }
+    }
+
+    private void Initialise()
+    {
+        _playerRB = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
@@ -83,6 +86,8 @@ public class ShipController : MonoBehaviour
         _trailEndYellow = _yellowTrailColor;
         _trailEndYellow.a = _shipTrail.endColor.a;
 
+        _orbitCollider.OnTriggerEnter = OnOrbitTriggerEnter;
+        
         SetTrailColour();
     }
 
@@ -106,15 +111,15 @@ public class ShipController : MonoBehaviour
 
     public void SwitchShieldState()
     {
-        switch (_currentShieldState)
+        switch (_currentShieldColour)
         {
-            case ShieldState.Blue:
-                _currentShieldState = ShieldState.Yellow;
+            case ObstacleColour.Blue:
+                _currentShieldColour = ObstacleColour.Yellow;
                 _shipAnimator.SetTrigger(kSetYellowShieldState);
                 break;
 
-            case ShieldState.Yellow:
-                _currentShieldState = ShieldState.Blue;
+            case ObstacleColour.Yellow:
+                _currentShieldColour = ObstacleColour.Blue;
                 _shipAnimator.SetTrigger(kSetBlueShieldState);
                 break;
         }
@@ -124,14 +129,14 @@ public class ShipController : MonoBehaviour
 
     private void SetTrailColour()
     {
-        switch (_currentShieldState)
+        switch (_currentShieldColour)
         {
-            case ShieldState.Blue:
+            case ObstacleColour.Blue:
                 _shipTrail.startColor = _trailStartBlue;
                 _shipTrail.endColor = _trailEndBlue;
                 break;
 
-            case ShieldState.Yellow:
+            case ObstacleColour.Yellow:
                 _shipTrail.startColor = _trailStartYellow;
                 _shipTrail.endColor = _trailEndYellow;
                 break;
@@ -140,26 +145,21 @@ public class ShipController : MonoBehaviour
 
     public void ActivateShield()
     {
-        switch (_currentShieldState)
+        switch (_currentShieldColour)
         {
-            case ShieldState.Blue:
+            case ObstacleColour.Blue:
                 _shipAnimator.SetTrigger(kActivateBlueShield);
                 break;
 
-            case ShieldState.Yellow:
+            case ObstacleColour.Yellow:
                 _shipAnimator.SetTrigger(kActivateYellowShield);
                 break;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnOrbitTriggerEnter(Collider2D other)
     {
-        switch (other.tag)
-        {
-            case TagUtility.Orbit:
-                BeginOrbit(other.transform, ((CircleCollider2D)other).radius);
-                break;
-        }
+        BeginOrbit(other.transform, ((CircleCollider2D)other).radius);
     }
 
     private void BeginOrbit(Transform orbitObject, float orbitRadius)
@@ -180,6 +180,14 @@ public class ShipController : MonoBehaviour
 
         _shipOrbitCoroutine = StartCoroutine(OrbitAroundPlanet(orbitObject, orbitRadius, !shouldOrbitAntiClockwise));
         _canSwipeMove = true;
+    }
+
+    public void DestroyPlayer()
+    {
+        // Spawn player destroyed effects.
+        _shipObject.SetActive(false);
+        _playerRB.velocity = Vector2.zero;
+        _playerRB.inertia = 0.0f;
     }
 
     private IEnumerator OrbitAroundPlanet(Transform orbitObject, float orbitRadius, bool isRotatingClockwise)
@@ -207,9 +215,9 @@ public class ShipController : MonoBehaviour
         }
     }
 
-    public ShieldState CurrentShieldState
+    public ObstacleColour CurrentShieldColour
     {
-        get { return _currentShieldState; }
-        set { _currentShieldState = value; }
+        get { return _currentShieldColour; }
+        set { _currentShieldColour = value; }
     }
 }

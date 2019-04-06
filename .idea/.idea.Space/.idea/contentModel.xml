@@ -34,12 +34,14 @@
             <e p="SpriteManager.cs" t="Include" />
           </e>
           <e p="Misc" t="Include">
+            <e p="ColliderObject.cs" t="Include" />
             <e p="ObjectPool.cs" t="Include" />
             <e p="PoolObject.cs" t="Include" />
           </e>
           <e p="Utility" t="Include">
             <e p="CameraUtilities.cs" t="Include" />
             <e p="CoroutineManager.cs" t="Include" />
+            <e p="PhysicsLayers.cs" t="Include" />
             <e p="TagUtility.cs" t="Include" />
           </e>
         </e>
