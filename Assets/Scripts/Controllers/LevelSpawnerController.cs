@@ -83,8 +83,8 @@ public class LevelSpawnerController : MonoBehaviour
         _minSpawnYDistancePlanets = _verticalScreenSpace * _minSpawnYDistanceScreenPercentage;
         _maxSpawnYDistancePlanets = _verticalScreenSpace * _maxSpawnYDistanceScreenPercentage;
 
-        // + 2 -> one for interaction on either side of the maximum poissible on screen planets.
-        _maxPlanetCount = (int)(1.0f / _minSpawnYDistanceScreenPercentage) + 3;
+        // + 4 -> one for interaction on either side of the maximum poissible on screen planets.
+        _maxPlanetCount = (int)(1.0f / _minSpawnYDistanceScreenPercentage) + 4;
 
         CreatePlanetPools();
 
@@ -128,6 +128,7 @@ public class LevelSpawnerController : MonoBehaviour
         // TODO - When changing the object pooling return to pool here
         if (_planetList.Count == _maxPlanetCount)
         {
+            _planetList[0].CleanUpObstacles();
             _planetList.RemoveAt(0);
         }
 
@@ -140,8 +141,7 @@ public class LevelSpawnerController : MonoBehaviour
         planet.PlanetController.Initialise(_currentPlanetSpawnLocation, SpriteManager.Instance.GetRandomPlanetSprite());
 
         _planetList.Add(planet);
-        
-        
+        CreatePlanetObstacles(planet, 1.0f);
     }
 
     // Returns how much Y was changed since the last small star location
@@ -154,13 +154,14 @@ public class LevelSpawnerController : MonoBehaviour
         return yIncrement;
     }
 
-    private void CreatePathObstacles()
+    private void CreatePlanetObstacles(PlanetData planet, float difficultyModifier)
     {
         var previousPlanetPosition = _planetList[_planetList.Count - 2].PlanetObject.transform.position;
         var spawnPosition = (previousPlanetPosition + _currentPlanetSpawnLocation) / 2;
         var planetPath = _currentPlanetSpawnLocation - previousPlanetPosition;
+        var asteroidSpawner = new AsteroidSpawner(spawnPosition, planetPath, true, 10.0f,1.0f, 1.5f);
         
-        var asteroidSpawner = new AsteroidSpawner(spawnPosition, planetPath, true, 10.0f,1.0f);
+        planet.ObstacleSpawners.Add(asteroidSpawner);
     }
 
     private IEnumerator SectionSpawnRoutine()

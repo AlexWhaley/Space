@@ -39,7 +39,7 @@
           </e>
           <e p="Spawners" t="Include">
             <e p="AsteroidSpawner.cs" t="Include" />
-            <e p="ObstacleSpawner.cs" t="Include" />
+            <e p="IObstacleSpawner.cs" t="Include" />
           </e>
           <e p="Utility" t="Include">
             <e p="CameraUtilities.cs" t="Include" />
