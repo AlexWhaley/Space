@@ -9,7 +9,6 @@
         <e p="Scripts" t="Include">
           <e p="Controllers" t="Include">
             <e p="AsteroidController.cs" t="Include" />
-            <e p="AsteroidSpawner.cs" t="Include" />
             <e p="BackgroundController.cs" t="Include" />
             <e p="CameraController.cs" t="Include" />
             <e p="LevelSpawnerController.cs" t="Include" />
@@ -37,6 +36,10 @@
             <e p="ColliderObject.cs" t="Include" />
             <e p="ObjectPool.cs" t="Include" />
             <e p="PoolObject.cs" t="Include" />
+          </e>
+          <e p="Spawners" t="Include">
+            <e p="AsteroidSpawner.cs" t="Include" />
+            <e p="ObstacleSpawner.cs" t="Include" />
           </e>
           <e p="Utility" t="Include">
             <e p="CameraUtilities.cs" t="Include" />

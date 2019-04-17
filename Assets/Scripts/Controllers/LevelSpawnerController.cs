@@ -125,9 +125,9 @@ public class LevelSpawnerController : MonoBehaviour
 
     private void AddNextRandomPlanet()
     {
+        // TODO - When changing the object pooling return to pool here
         if (_planetList.Count == _maxPlanetCount)
         {
-            // Uninitialisation with controller done here
             _planetList.RemoveAt(0);
         }
 
@@ -135,15 +135,13 @@ public class LevelSpawnerController : MonoBehaviour
 
         PlanetData planet = Random.Range(0.0f, 1.0f) <= _smallToBigPlanetRatio ? GetPooledSmallPlanet() : GetPooledBigPlanet();
         planet.PositionVariation = new Vector2(_currentPlanetSpawnLocation.x, yIncrement);
+        
+        // TODO - When object pooled the getter should fetch the random sprite
         planet.PlanetController.Initialise(_currentPlanetSpawnLocation, SpriteManager.Instance.GetRandomPlanetSprite());
 
         _planetList.Add(planet);
         
-        var previousPlanetPosition = _planetList[_planetList.Count - 2].PlanetObject.transform.position;
-        var spawnPosition = (previousPlanetPosition + _currentPlanetSpawnLocation) / 2;
-        var planetPath = _currentPlanetSpawnLocation - previousPlanetPosition;
         
-        var asteroidSpawner = new AsteroidSpawner(spawnPosition, planetPath, true, 10.0f,1.0f);
     }
 
     // Returns how much Y was changed since the last small star location
@@ -158,7 +156,11 @@ public class LevelSpawnerController : MonoBehaviour
 
     private void CreatePathObstacles()
     {
-
+        var previousPlanetPosition = _planetList[_planetList.Count - 2].PlanetObject.transform.position;
+        var spawnPosition = (previousPlanetPosition + _currentPlanetSpawnLocation) / 2;
+        var planetPath = _currentPlanetSpawnLocation - previousPlanetPosition;
+        
+        var asteroidSpawner = new AsteroidSpawner(spawnPosition, planetPath, true, 10.0f,1.0f);
     }
 
     private IEnumerator SectionSpawnRoutine()
