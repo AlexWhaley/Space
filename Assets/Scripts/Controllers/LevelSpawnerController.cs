@@ -48,18 +48,14 @@ public class LevelSpawnerController : MonoBehaviour
     private Transform _cameraTransform;
     private Coroutine _sectionSpawnRoutine;
 
-    // Additional Connecting Obstacles
-    public enum ConnectingObstacleType
-    {
-        Asteroids
-    }
+    private bool _isLeftTrajectory;
 
     private void Awake()
     {
         // Wont need this just for clarification.
         if (_instance != null && _instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
         else
         {
@@ -169,11 +165,13 @@ public class LevelSpawnerController : MonoBehaviour
             var spawnPosition = useablePathMin + (useablePathMax - useablePathMin) * i / (obstacleBeltCount + 1);
             CreateBelt(newPlanet, spawnPosition, normalizedPlanetPath);
         }
+        
+        _isLeftTrajectory = !_isLeftTrajectory;
     }
 
     private void CreateBelt(PlanetData planet, Vector2 spawnPosition, Vector2 planetPath)
     {
-        var asteroidSpawner = new AsteroidSpawner(spawnPosition, planetPath, true, 10.0f,1.0f, 1.5f);
+        var asteroidSpawner = new AsteroidSpawner(spawnPosition, planetPath, _isLeftTrajectory, 10.0f,1.0f, 1.5f);
         planet.ObstacleSpawners.Add(asteroidSpawner);
     }
 
