@@ -17,8 +17,5 @@ public class PlanetController : MonoBehaviour
         {
             _spriteRenderer.sprite = newSprite;
         }
-        // Reset ring animators
-        // Set up first ring
-        // Generate lists of rewards per ring.
     }
 }

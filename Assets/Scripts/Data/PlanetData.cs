@@ -10,6 +10,7 @@ public class PlanetData
         PlanetObject = planetObject;
         PositionVariation = positionVariation;
         PlanetController = PlanetObject.GetComponent<PlanetController>();
+        OrbitRadius = PlanetObject.GetComponentInChildren<CircleCollider2D>().radius;
         ObstacleSpawners = new List<IObstacleSpawner>();
     }
 
@@ -17,6 +18,7 @@ public class PlanetData
     public Vector2 PositionVariation { get; set; }
     public List<IObstacleSpawner> ObstacleSpawners { get; private set; }
     public PlanetController PlanetController { get; private set; }
+    public float OrbitRadius { get; private set; }
 
     public void CleanUpObstacles()
     {

@@ -53,11 +53,14 @@ public class ObstacleController : MonoBehaviour
         }
         else if (triggerLayer == PhysicsLayers.PlayerObstacle)
         {
-            other.gameObject.GetComponentInParent<ShipController>().DestroyPlayer();
+            var shipController = other.gameObject.GetComponentInParent<ShipController>();
+            if (shipController.CurrentShieldColour != _colour)
+            {
+                shipController.DestroyPlayer();
+            }
         }
     }
     
-
     public ObstacleColour Colour
     {
         get { return _colour; }

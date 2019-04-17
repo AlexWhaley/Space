@@ -141,7 +141,7 @@ public class LevelSpawnerController : MonoBehaviour
         planet.PlanetController.Initialise(_currentPlanetSpawnLocation, SpriteManager.Instance.GetRandomPlanetSprite());
 
         _planetList.Add(planet);
-        CreatePlanetObstacles(planet, 1.0f);
+        CreatePlanetObstacles(planet,1.0f);
     }
 
     // Returns how much Y was changed since the last small star location
@@ -154,13 +154,26 @@ public class LevelSpawnerController : MonoBehaviour
         return yIncrement;
     }
 
-    private void CreatePlanetObstacles(PlanetData planet, float difficultyModifier)
+    private void CreatePlanetObstacles(PlanetData newPlanet, float difficultyModifier)
     {
-        var previousPlanetPosition = _planetList[_planetList.Count - 2].PlanetObject.transform.position;
-        var spawnPosition = (previousPlanetPosition + _currentPlanetSpawnLocation) / 2;
-        var planetPath = _currentPlanetSpawnLocation - previousPlanetPosition;
-        var asteroidSpawner = new AsteroidSpawner(spawnPosition, planetPath, true, 10.0f,1.0f, 1.5f);
+        var obstacleBeltCount = Random.Range(1, 2);
+        var previousPlanet = _planetList[_planetList.Count - 2];
+        var previousPlanetPosition = previousPlanet.PlanetObject.transform.position;
+        var normalizedPlanetPath = (_currentPlanetSpawnLocation - previousPlanetPosition).normalized;
+
+        Vector2 useablePathMin = previousPlanetPosition + (previousPlanet.OrbitRadius + 1.0f) * normalizedPlanetPath;
+        Vector2 useablePathMax = _currentPlanetSpawnLocation - (newPlanet.OrbitRadius + 1.0f) * normalizedPlanetPath;
         
+        for (int i = 1; i <= obstacleBeltCount; ++i)
+        {
+            var spawnPosition = useablePathMin + (useablePathMax - useablePathMin) * i / (obstacleBeltCount + 1);
+            CreateBelt(newPlanet, spawnPosition, normalizedPlanetPath);
+        }
+    }
+
+    private void CreateBelt(PlanetData planet, Vector2 spawnPosition, Vector2 planetPath)
+    {
+        var asteroidSpawner = new AsteroidSpawner(spawnPosition, planetPath, true, 10.0f,1.0f, 1.5f);
         planet.ObstacleSpawners.Add(asteroidSpawner);
     }
 
