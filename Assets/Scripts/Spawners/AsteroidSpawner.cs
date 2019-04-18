@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AsteroidSpawner : IObstacleSpawner
 {
-    private const float OffscreenOffset = 2.0f;
+    private const float OffscreenOffset = 5.0f;
     private Vector2 _planetPath;
     private Vector2 _startPosition;
     private Vector2 _asteroidTrajectory;

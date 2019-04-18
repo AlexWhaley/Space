@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b4bd946-f016-4c3e-ae06-e07f8239a823" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Space/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Space/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Gameplay/Planets/Orbits/SmallOrbit.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Gameplay/Planets/Orbits/SmallOrbit.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Managers/ScreenManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Managers/ScreenManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Managers/SpriteManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Managers/SpriteManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/pfSmallPlanet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/pfSmallPlanet.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/LevelSpawnerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/LevelSpawnerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/PlanetController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/PlanetController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/ShipController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/ShipController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/PlanetData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/PlanetData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/InputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/SpriteManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/SpriteManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spawners/AsteroidSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spawners/AsteroidSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +16,7 @@
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/ObstacleController.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="523">
-              <caret line="61" column="5" lean-forward="true" selection-start-line="42" selection-start-column="4" selection-end-line="61" selection-end-column="5" />
+              <caret line="61" column="5" selection-start-line="42" selection-start-column="4" selection-end-line="61" selection-end-column="5" />
               <folding>
                 <marker date="1555515064901" expanded="false" signature="6:78" ph="..." />
                 <marker date="1555515064901" expanded="true" signature="211:2135" ph="{...}" />
@@ -52,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Misc/EdgeCollider.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="72">
-              <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+              <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
               <folding>
                 <marker date="1555587508211" expanded="false" signature="6:78" ph="..." />
                 <marker date="1555587508211" expanded="true" signature="121:270" ph="{...}" />
@@ -66,37 +50,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Spawners/IObstacleSpawner.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-              <folding>
-                <marker date="1555509830187" expanded="true" signature="33:63" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Spawners/AsteroidSpawner.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="71" column="93" selection-start-line="71" selection-start-column="93" selection-end-line="71" selection-end-column="93" />
+            <state>
+              <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
               <folding>
-                <marker date="1555585220604" expanded="false" signature="6:97" ph="..." />
-                <marker date="1555585220604" expanded="true" signature="146:4210" ph="{...}" />
-                <marker date="1555585220604" expanded="true" signature="853:2581" ph="{...}" />
-                <marker date="1555585220604" expanded="true" signature="2629:2922" ph="{...}" />
-                <marker date="1555585220604" expanded="true" signature="2656:2916" ph="{...}" />
-                <marker date="1555585220604" expanded="true" signature="2972:3196" ph="{...}" />
-                <marker date="1555585220604" expanded="true" signature="3061:3190" ph="{...}" />
-                <marker date="1555585220604" expanded="true" signature="3229:3547" ph="{...}" />
-                <marker date="1555585220604" expanded="true" signature="3593:3889" ph="{...}" />
-                <marker date="1555585220604" expanded="true" signature="3636:3781" ph="{...}" />
-                <marker date="1555585220604" expanded="true" signature="3794:3883" ph="{...}" />
-                <marker date="1555585220604" expanded="true" signature="3922:4208" ph="{...}" />
-                <marker date="1555585220604" expanded="true" signature="4145:4202" ph="{...}" />
+                <marker date="1555595065116" expanded="false" signature="6:97" ph="..." />
+                <marker date="1555595065116" expanded="true" signature="146:4211" ph="{...}" />
+                <marker date="1555595065116" expanded="true" signature="854:2582" ph="{...}" />
+                <marker date="1555595065116" expanded="true" signature="2630:2923" ph="{...}" />
+                <marker date="1555595065116" expanded="true" signature="2657:2917" ph="{...}" />
+                <marker date="1555595065116" expanded="true" signature="2973:3197" ph="{...}" />
+                <marker date="1555595065116" expanded="true" signature="3062:3191" ph="{...}" />
+                <marker date="1555595065116" expanded="true" signature="3230:3548" ph="{...}" />
+                <marker date="1555595065116" expanded="true" signature="3594:3890" ph="{...}" />
+                <marker date="1555595065116" expanded="true" signature="3637:3782" ph="{...}" />
+                <marker date="1555595065116" expanded="true" signature="3795:3884" ph="{...}" />
+                <marker date="1555595065116" expanded="true" signature="3923:4209" ph="{...}" />
+                <marker date="1555595065116" expanded="true" signature="4146:4203" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -258,12 +230,25 @@
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/AsteroidController.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="48">
-              <caret line="4" column="44" lean-forward="true" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
+              <caret line="4" column="18" lean-forward="true" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
               <folding>
                 <marker date="1555513616546" expanded="false" signature="6:78" ph="..." />
                 <marker date="1555513616546" expanded="true" signature="132:631" ph="{...}" />
                 <marker date="1555513616546" expanded="true" signature="192:326" ph="{...}" />
                 <marker date="1555513616546" expanded="true" signature="417:629" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Data/Asteroid.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+              <folding>
+                <marker date="1546808656766" expanded="false" signature="6:78" ph="..." />
+                <marker date="1546808656766" expanded="true" signature="154:158" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -347,12 +332,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/PlanetController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/LevelSpawnerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Data/PlanetData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Spawners/AsteroidSpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Managers/GameStateManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Managers/InputManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ShipController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Misc/EdgeColliders.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Misc/EdgeCollider.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Spawners/AsteroidSpawner.cs" />
       </list>
     </option>
   </component>
@@ -361,7 +346,7 @@
       <facet id="riderModule/invalid/Default Android Facet" />
     </ignored-facets>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="162" />
     <option name="y" value="-10" />
     <option name="width" value="1400" />
@@ -421,12 +406,12 @@
       <workItem from="1547074007594" duration="65000" />
       <workItem from="1554566619103" duration="13140000" />
       <workItem from="1555508353598" duration="9365000" />
-      <workItem from="1555583604701" duration="4823000" />
+      <workItem from="1555583604701" duration="4886000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66306000" />
+    <option name="totallyTimeSpent" value="66369000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -438,7 +423,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
@@ -532,17 +517,6 @@
             <marker date="1546820271083" expanded="true" signature="496:606" ph="{...}" />
             <marker date="1546820271083" expanded="true" signature="688:743" ph="{...}" />
             <marker date="1546820271083" expanded="true" signature="810:856" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Data/Asteroid.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-          <folding>
-            <marker date="1546808656766" expanded="false" signature="6:78" ph="..." />
-            <marker date="1546808656766" expanded="true" signature="154:158" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -749,31 +723,9 @@
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Spawners/IObstacleSpawner.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
           <folding>
             <marker date="1555509830187" expanded="true" signature="33:63" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Spawners/AsteroidSpawner.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="71" column="93" selection-start-line="71" selection-start-column="93" selection-end-line="71" selection-end-column="93" />
-          <folding>
-            <marker date="1555585220604" expanded="false" signature="6:97" ph="..." />
-            <marker date="1555585220604" expanded="true" signature="146:4210" ph="{...}" />
-            <marker date="1555585220604" expanded="true" signature="853:2581" ph="{...}" />
-            <marker date="1555585220604" expanded="true" signature="2629:2922" ph="{...}" />
-            <marker date="1555585220604" expanded="true" signature="2656:2916" ph="{...}" />
-            <marker date="1555585220604" expanded="true" signature="2972:3196" ph="{...}" />
-            <marker date="1555585220604" expanded="true" signature="3061:3190" ph="{...}" />
-            <marker date="1555585220604" expanded="true" signature="3229:3547" ph="{...}" />
-            <marker date="1555585220604" expanded="true" signature="3593:3889" ph="{...}" />
-            <marker date="1555585220604" expanded="true" signature="3636:3781" ph="{...}" />
-            <marker date="1555585220604" expanded="true" signature="3794:3883" ph="{...}" />
-            <marker date="1555585220604" expanded="true" signature="3922:4208" ph="{...}" />
-            <marker date="1555585220604" expanded="true" signature="4145:4202" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -920,19 +872,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/AsteroidController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="4" column="44" lean-forward="true" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
-          <folding>
-            <marker date="1555513616546" expanded="false" signature="6:78" ph="..." />
-            <marker date="1555513616546" expanded="true" signature="132:631" ph="{...}" />
-            <marker date="1555513616546" expanded="true" signature="192:326" ph="{...}" />
-            <marker date="1555513616546" expanded="true" signature="417:629" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Misc/EdgeColliders.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -943,7 +882,7 @@
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/ObstacleController.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="523">
-          <caret line="61" column="5" lean-forward="true" selection-start-line="42" selection-start-column="4" selection-end-line="61" selection-end-column="5" />
+          <caret line="61" column="5" selection-start-line="42" selection-start-column="4" selection-end-line="61" selection-end-column="5" />
           <folding>
             <marker date="1555515064901" expanded="false" signature="6:78" ph="..." />
             <marker date="1555515064901" expanded="true" signature="211:2135" ph="{...}" />
@@ -965,11 +904,57 @@
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Misc/EdgeCollider.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
-          <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
           <folding>
             <marker date="1555587508211" expanded="false" signature="6:78" ph="..." />
             <marker date="1555587508211" expanded="true" signature="121:270" ph="{...}" />
             <marker date="1555587508211" expanded="true" signature="175:268" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/AsteroidController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="4" column="18" lean-forward="true" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+          <folding>
+            <marker date="1555513616546" expanded="false" signature="6:78" ph="..." />
+            <marker date="1555513616546" expanded="true" signature="132:631" ph="{...}" />
+            <marker date="1555513616546" expanded="true" signature="192:326" ph="{...}" />
+            <marker date="1555513616546" expanded="true" signature="417:629" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Data/Asteroid.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding>
+            <marker date="1546808656766" expanded="false" signature="6:78" ph="..." />
+            <marker date="1546808656766" expanded="true" signature="154:158" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Spawners/AsteroidSpawner.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+          <folding>
+            <marker date="1555595065116" expanded="false" signature="6:97" ph="..." />
+            <marker date="1555595065116" expanded="true" signature="146:4211" ph="{...}" />
+            <marker date="1555595065116" expanded="true" signature="854:2582" ph="{...}" />
+            <marker date="1555595065116" expanded="true" signature="2630:2923" ph="{...}" />
+            <marker date="1555595065116" expanded="true" signature="2657:2917" ph="{...}" />
+            <marker date="1555595065116" expanded="true" signature="2973:3197" ph="{...}" />
+            <marker date="1555595065116" expanded="true" signature="3062:3191" ph="{...}" />
+            <marker date="1555595065116" expanded="true" signature="3230:3548" ph="{...}" />
+            <marker date="1555595065116" expanded="true" signature="3594:3890" ph="{...}" />
+            <marker date="1555595065116" expanded="true" signature="3637:3782" ph="{...}" />
+            <marker date="1555595065116" expanded="true" signature="3795:3884" ph="{...}" />
+            <marker date="1555595065116" expanded="true" signature="3923:4209" ph="{...}" />
+            <marker date="1555595065116" expanded="true" signature="4146:4203" ph="{...}" />
           </folding>
         </state>
       </provider>
