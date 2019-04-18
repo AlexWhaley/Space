@@ -69,7 +69,7 @@ public class AsteroidSpawner : IObstacleSpawner
     public void SpawnAsteroid()
     {
         var newAsteroid = ObjectPoolManager.Instance.AsteroidPool.Get();
-        Vector3 startPosition = _startPosition + _planetPath * Random.Range(-1.0f, 1.0f) * 0.03f;
+        Vector3 startPosition = _startPosition + _planetPath * Random.Range(-1.0f, 1.0f) * 1.0f;
         newAsteroid.Controller.Fire(startPosition, _asteroidTrajectory, _isLeftTrajectory);
         _spawnedAsteroids.Add(newAsteroid);
     }

@@ -27,6 +27,7 @@
             <e p="VectorExtensions.cs" t="Include" />
           </e>
           <e p="Managers" t="Include">
+            <e p="GameStateManager.cs" t="Include" />
             <e p="InputManager.cs" t="Include" />
             <e p="ObjectPoolManager.cs" t="Include" />
             <e p="ScreenManager.cs" t="Include" />
@@ -34,6 +35,7 @@
           </e>
           <e p="Misc" t="Include">
             <e p="ColliderObject.cs" t="Include" />
+            <e p="EdgeCollider.cs" t="Include" />
             <e p="ObjectPool.cs" t="Include" />
             <e p="PoolObject.cs" t="Include" />
           </e>

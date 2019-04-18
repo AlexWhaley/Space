@@ -188,6 +188,7 @@ public class ShipController : MonoBehaviour
         _shipObject.SetActive(false);
         _playerRB.velocity = Vector2.zero;
         _playerRB.inertia = 0.0f;
+        GameStateManager.Instance.SetGameOverState();
     }
 
     private IEnumerator OrbitAroundPlanet(Transform orbitObject, float orbitRadius, bool isRotatingClockwise)

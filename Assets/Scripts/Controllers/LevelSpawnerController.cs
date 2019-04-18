@@ -91,7 +91,7 @@ public class LevelSpawnerController : MonoBehaviour
 
         PlanetData initialPlanet = GetPooledBigPlanet();
         initialPlanet.PositionVariation = new Vector2(_currentPlanetSpawnLocation.x, _currentPlanetSpawnLocation.y);
-        initialPlanet.PlanetController.Initialise(_currentPlanetSpawnLocation, SpriteManager.Instance.GetRandomPlanetSprite());
+        initialPlanet.PlanetController.SetPositionAndSprite(_currentPlanetSpawnLocation, SpriteManager.Instance.GetRandomPlanetSprite(initialPlanet.IsSmallPlanet));
 
         _planetList.Add(initialPlanet);
 
@@ -109,14 +109,15 @@ public class LevelSpawnerController : MonoBehaviour
         _smallPlanetPool = new List<PlanetData>(_maxPlanetCount);
         _bigPlanetPool = new List<PlanetData>(_maxPlanetCount);
 
+        var parentRotation = _planetParent.transform.rotation;
+
         for (int i = 0; i < _maxPlanetCount; ++i)
         {
-            GameObject smallPlanet = Instantiate(_smallPlanetPrefab, offScreenSpawn, _planetParent.transform.rotation, _planetParent);
-            GameObject bigPlanet = Instantiate(_bigPlanetPrefab, offScreenSpawn, _planetParent.transform.rotation, _planetParent);
-            _smallPlanetPool.Add(new PlanetData(smallPlanet, offScreenSpawn));
-            _bigPlanetPool.Add(new PlanetData(bigPlanet, offScreenSpawn));
+            GameObject smallPlanet = Instantiate(_smallPlanetPrefab, offScreenSpawn, parentRotation, _planetParent);
+            GameObject bigPlanet = Instantiate(_bigPlanetPrefab, offScreenSpawn, parentRotation, _planetParent);
+            _smallPlanetPool.Add(new PlanetData(smallPlanet, offScreenSpawn, true));
+            _bigPlanetPool.Add(new PlanetData(bigPlanet, offScreenSpawn, false));
         }
-
     }
 
     private void AddNextRandomPlanet()
@@ -134,7 +135,7 @@ public class LevelSpawnerController : MonoBehaviour
         planet.PositionVariation = new Vector2(_currentPlanetSpawnLocation.x, yIncrement);
         
         // TODO - When object pooled the getter should fetch the random sprite
-        planet.PlanetController.Initialise(_currentPlanetSpawnLocation, SpriteManager.Instance.GetRandomPlanetSprite());
+        planet.PlanetController.SetPositionAndSprite(_currentPlanetSpawnLocation, SpriteManager.Instance.GetRandomPlanetSprite(planet.IsSmallPlanet));
 
         _planetList.Add(planet);
         CreatePlanetObstacles(planet,1.0f);

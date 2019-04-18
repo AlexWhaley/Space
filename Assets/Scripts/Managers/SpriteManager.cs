@@ -18,6 +18,20 @@ public class SpriteManager : MonoBehaviour
     [SerializeField]
     private List<Sprite> _bigPurplePlanetSprites = new List<Sprite>(3);
     
+    [Header("Big Planet Sprites")]
+    [SerializeField]
+    private List<Sprite> _smallRedPlanetSprites = new List<Sprite>(3);
+    [SerializeField]
+    private List<Sprite> _smallBluePlanetSprites = new List<Sprite>(3);
+    [SerializeField]
+    private List<Sprite> _smallGreenPlanetSprites = new List<Sprite>(3);
+    [SerializeField]
+    private List<Sprite> _smallOrangePlanetSprites = new List<Sprite>(3);
+    [SerializeField]
+    private List<Sprite> _smallPinkPlanetSprites = new List<Sprite>(3);
+    [SerializeField]
+    private List<Sprite> _smallPurplePlanetSprites = new List<Sprite>(3);
+    
     [Header("Asteroid Sprites")]
     [SerializeField]
     private List<Sprite> _blueAsteroidSprites = new List<Sprite>(3);
@@ -68,7 +82,7 @@ public class SpriteManager : MonoBehaviour
         }
     }
 
-    public Sprite GetRandomPlanetSprite()
+    public Sprite GetRandomPlanetSprite(bool isSmallPlanet)
     {
         int randomColourIndex = Random.Range(0, _randomPlanetColourList.Count);
 
@@ -81,17 +95,17 @@ public class SpriteManager : MonoBehaviour
         switch (randomColour)
         {
             case PlanetColours.Red:
-                return _bigRedPlanetSprites[Random.Range(0, _bigRedPlanetSprites.Count)];
+                return isSmallPlanet ? _smallRedPlanetSprites[Random.Range(0, _smallRedPlanetSprites.Count)] : _bigRedPlanetSprites[Random.Range(0, _bigRedPlanetSprites.Count)];
             case PlanetColours.Blue:
-                return _bigBluePlanetSprites[Random.Range(0, _bigBluePlanetSprites.Count)];
+                return isSmallPlanet ? _smallBluePlanetSprites[Random.Range(0, _smallBluePlanetSprites.Count)] : _bigBluePlanetSprites[Random.Range(0, _bigBluePlanetSprites.Count)];
             case PlanetColours.Green:
-                return _bigGreenPlanetSprites[Random.Range(0, _bigGreenPlanetSprites.Count)];
+                return isSmallPlanet ? _smallGreenPlanetSprites[Random.Range(0, _smallGreenPlanetSprites.Count)] : _bigGreenPlanetSprites[Random.Range(0, _bigGreenPlanetSprites.Count)];
             case PlanetColours.Orange:
-                return _bigOrangePlanetSprites[Random.Range(0, _bigOrangePlanetSprites.Count)];
+                return isSmallPlanet ? _smallOrangePlanetSprites[Random.Range(0, _smallOrangePlanetSprites.Count)] : _bigOrangePlanetSprites[Random.Range(0, _bigOrangePlanetSprites.Count)];
             case PlanetColours.Pink:
-                return _bigPinkPlanetSprites[Random.Range(0, _bigPinkPlanetSprites.Count)];
+                return isSmallPlanet ? _smallPinkPlanetSprites[Random.Range(0, _smallPinkPlanetSprites.Count)] : _bigPinkPlanetSprites[Random.Range(0, _bigPinkPlanetSprites.Count)];
             case PlanetColours.Purple:
-                return _bigPurplePlanetSprites[Random.Range(0, _bigPurplePlanetSprites.Count)];
+                return isSmallPlanet ? _smallPurplePlanetSprites[Random.Range(0, _smallPurplePlanetSprites.Count)] : _bigPurplePlanetSprites[Random.Range(0, _bigPurplePlanetSprites.Count)];
             default:
                 return null;
         }

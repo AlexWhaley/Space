@@ -10,7 +10,7 @@ public class PlanetController : MonoBehaviour
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    public void Initialise(Vector3 newPosition, Sprite newSprite)
+    public void SetPositionAndSprite(Vector3 newPosition, Sprite newSprite)
     {
         transform.position = newPosition;
         if (newSprite != null)

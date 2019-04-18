@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InputManager : MonoBehaviour
 {
@@ -93,7 +94,15 @@ public class InputManager : MonoBehaviour
             if (_waitingForTouchCommand)
             {
                 // Tap input was succesfully registered
-                ShipController.Instance.SwitchShieldState();
+                if (GameStateManager.Instance.IsGameInProgress)
+                {
+                    ShipController.Instance.SwitchShieldState();
+                }
+                else if (GameStateManager.Instance.IsGameOver)
+                {
+                    // TODO - Don't use this garbage scene reloading and properly return to pool and reposition.
+                    SceneManager.LoadScene(0);
+                }
             }
         }
     }
