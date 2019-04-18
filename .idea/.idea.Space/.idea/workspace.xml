@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b4bd946-f016-4c3e-ae06-e07f8239a823" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/LevelSpawnerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/LevelSpawnerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Gameplay/Planets/Orbits/SmallOrbit.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Gameplay/Planets/Orbits/SmallOrbit.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/pfBigPlanet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/pfBigPlanet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/pfSmallPlanet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/pfSmallPlanet.prefab" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -114,8 +116,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/LevelSpawnerController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="168" column="47" selection-start-line="168" selection-start-column="46" selection-end-line="168" selection-end-column="47" />
+            <state relative-caret-position="144">
+              <caret line="160" lean-forward="true" selection-start-line="160" selection-end-line="160" />
               <folding>
                 <marker date="1555517404156" expanded="false" signature="6:102" ph="..." />
                 <marker date="1555517404156" expanded="true" signature="155:8586" ph="{...}" />
@@ -380,12 +382,12 @@
       <workItem from="1546790595383" duration="28742000" />
       <workItem from="1547074007594" duration="65000" />
       <workItem from="1554566619103" duration="13140000" />
-      <workItem from="1555508353598" duration="9043000" />
+      <workItem from="1555508353598" duration="9365000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61161000" />
+    <option name="totallyTimeSpent" value="61483000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -398,7 +400,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -409,7 +410,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.25083613" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.25083613" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -817,8 +818,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/LevelSpawnerController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="168" column="47" selection-start-line="168" selection-start-column="46" selection-end-line="168" selection-end-column="47" />
+        <state relative-caret-position="144">
+          <caret line="160" lean-forward="true" selection-start-line="160" selection-end-line="160" />
           <folding>
             <marker date="1555517404156" expanded="false" signature="6:102" ph="..." />
             <marker date="1555517404156" expanded="true" signature="155:8586" ph="{...}" />
