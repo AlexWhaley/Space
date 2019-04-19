@@ -14,9 +14,22 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    private enum ControlScheme
+    {
+        SwipeToMove,
+        OneTouch,
+        OneTouchMoveToTap
+    }
+
+    private Camera _mainCamera;
+    private ShipController _shipController;
     private Vector3 _firstTouch;   //First touch position
     private Vector3 _lastTouch;   //Last touch position
     private bool _waitingForTouchCommand = false;
+    private ControlScheme _currentControlScheme;
+    
+    private float _currentControlSchemeChangeHoldTime;
+    private const float ControlSchemeChangeHoldTime = 1.0f;
 
     [SerializeField]
     private float dragDistance;  //minimum distance for a swipe to be registered
@@ -35,43 +48,73 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        _mainCamera = Camera.main;
+        _currentControlSchemeChangeHoldTime = ControlSchemeChangeHoldTime;
+        _currentControlScheme = ControlScheme.OneTouchMoveToTap;
+        _shipController = ShipController.Instance;
+    }
+
     void Update()
     {
         HandleMouseInput();
         HandleShieldInputs();
-        /**
-        if (Input.touchCount == 1) // user is touching the screen with a single touch
+        
+        if (Input.touchCount == 2) // user is touching the screen with a single touch
         {
-            Touch touch = Input.GetTouch(0); // get the touch
-            if (touch.phase == TouchPhase.Began) //check for the first touch
+            if (_currentControlSchemeChangeHoldTime > 0.0f)
             {
-                _firstTouch = touch.position;
-                _lastTouch = touch.position;
-            }
-            else if (touch.phase == TouchPhase.Moved) // update the last position based on where they moved
-            {
-                _lastTouch = touch.position;
-            }
-            else if (touch.phase == TouchPhase.Ended) //check if the finger is removed from the screen
-            {
-                _lastTouch = touch.position;  //last touch position. Ommitted if you use list
-            }
-            
-            if (Mathf.Abs(_lastTouch.x - _firstTouch.x) > dragDistance || Mathf.Abs(_lastTouch.y - _firstTouch.y) > dragDistance)
-            {
-                Vector2 swipeDirection = new Vector2(_lastTouch.x - _firstTouch.x, _lastTouch.y - _firstTouch.y);
-                swipeDirection.Normalize();
-                ShipController.Instance.SwipeMoveShip(swipeDirection, 100.0f);
+                _currentControlSchemeChangeHoldTime -= Time.deltaTime;
             }
             else
-            {   //It's a tap as the drag distance is less than 20% of the screen height
-                Debug.Log("Tap");
+            {
+                _currentControlScheme = ControlScheme.OneTouchMoveToTap;
             }
         }
-    **/
+        else if (Input.touchCount == 3)
+        {
+            if (_currentControlSchemeChangeHoldTime > 0.0f)
+            {
+                _currentControlSchemeChangeHoldTime -= Time.deltaTime;
+            }
+            else
+            {
+                _currentControlScheme = ControlScheme.SwipeToMove;
+            }
+        }
+        else if (Input.touchCount == 4)
+        {
+            if (_currentControlSchemeChangeHoldTime > 0.0f)
+            {
+                _currentControlSchemeChangeHoldTime -= Time.deltaTime;
+            }
+            else
+            {
+                _currentControlScheme = ControlScheme.OneTouch;
+            }
+        }
+        else
+        {
+            _currentControlSchemeChangeHoldTime = ControlSchemeChangeHoldTime;
+        }
     }
 
     private void HandleMouseInput()
+    {
+        switch (_currentControlScheme)
+        {
+            case ControlScheme.SwipeToMove:
+                HandleInputForSwipeToMoveControlScheme();
+                break;
+            case ControlScheme.OneTouch:
+            case ControlScheme.OneTouchMoveToTap:
+                HandleInputForOneTouchControlScheme();
+                break;
+        }
+    }
+
+    private void HandleInputForSwipeToMoveControlScheme()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -94,16 +137,42 @@ public class InputManager : MonoBehaviour
             if (_waitingForTouchCommand)
             {
                 // Tap input was succesfully registered
-                if (GameStateManager.Instance.IsGameInProgress)
-                {
-                    ShipController.Instance.SwitchShieldState();
-                }
-                else if (GameStateManager.Instance.IsGameOver)
-                {
-                    // TODO - Don't use this garbage scene reloading and properly return to pool and reposition.
-                    SceneManager.LoadScene(0);
-                }
+                InputSingleTap();
             }
+        }
+    }
+
+    private void HandleInputForOneTouchControlScheme()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            InputSingleTap();
+        }
+    }
+
+    private void InputSingleTap()
+    {
+        if (GameStateManager.Instance.IsGameInProgress)
+        {
+            Vector3? tapPosition = null;
+            if (_currentControlScheme != ControlScheme.SwipeToMove && _shipController.IsOrbiting)
+            {
+                if (_currentControlScheme == ControlScheme.OneTouchMoveToTap)
+                {
+                    var screenToWorld = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                    tapPosition = new Vector3(screenToWorld.x, screenToWorld.y, 0.0f);
+                }
+                _shipController.TapLeaveOrbit(tapPosition);
+            }
+            else
+            {
+                _shipController.SwitchShieldState();
+            }
+        }
+        else if (GameStateManager.Instance.IsGameOver)
+        {
+            // TODO - Don't use this garbage scene reloading and properly return to pool and reposition.
+            SceneManager.LoadScene(0);
         }
     }
 
@@ -114,7 +183,7 @@ public class InputManager : MonoBehaviour
             // Swipe input was succesfully registered
             Vector2 swipeDirection = new Vector2(_lastTouch.x - _firstTouch.x, _lastTouch.y - _firstTouch.y);
             swipeDirection.Normalize();
-            ShipController.Instance.SwipeMoveShip(swipeDirection);
+            _shipController.MoveShip(swipeDirection);
             _waitingForTouchCommand = false;
         }
     }
@@ -124,7 +193,7 @@ public class InputManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            ShipController.Instance.ActivateShield();
+            _shipController.ActivateShield();
         }
     }
 }

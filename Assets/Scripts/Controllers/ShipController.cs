@@ -40,7 +40,8 @@ public class ShipController : MonoBehaviour
 
     private ObstacleColour _currentShieldColour = ObstacleColour.Blue;
 
-    private bool _canSwipeMove = true;
+    private bool _isOrbiting = true;
+    private bool _isOrbitClockwise;
     private Coroutine _shipOrbitCoroutine;
     
     // Constants
@@ -49,7 +50,7 @@ public class ShipController : MonoBehaviour
     private const string kActivateBlueShield = "UseBlueShield";
     private const string kActivateYellowShield = "UseYellowShield";
     private const float kDegreesInACircle = 360.0f;
-
+    
     [SerializeField] private GameObject _shipObject;
     [SerializeField] private ColliderObject _orbitCollider;
     
@@ -89,6 +90,7 @@ public class ShipController : MonoBehaviour
         _orbitCollider.OnTriggerEnter = OnOrbitTriggerEnter;
         
         SetTrailColour();
+        MoveShip(ShipForwardDirection);
     }
 
     private Vector3 ShipForwardDirection
@@ -97,16 +99,22 @@ public class ShipController : MonoBehaviour
         set { _playerRB.transform.up = value; }
     }
 
-    public void SwipeMoveShip(Vector2 swipeDirection)
+    public void MoveShip(Vector2 direction)
     {
-        if (_canSwipeMove)
+        if (_isOrbiting)
         {
             EndOrbitIfExists();
-            Vector2 swipeForce = swipeDirection * _shipSpeed;
+            Vector2 swipeForce = direction * _shipSpeed;
             _playerRB.velocity = swipeForce;
-            ShipForwardDirection = swipeDirection;
-            _canSwipeMove = false;
+            ShipForwardDirection = direction;
+            _isOrbiting = false;
         }
+    }
+
+    public void TapLeaveOrbit(Vector3? target)
+    {
+        Vector3 direction = target.HasValue ? (target.Value - _playerRB.transform.position).normalized : ShipForwardDirection;
+        MoveShip(direction);
     }
 
     public void SwitchShieldState()
@@ -172,14 +180,14 @@ public class ShipController : MonoBehaviour
 
         float angle = Vector3.Angle(ShipForwardDirection, (directionToPlayer * -1));
 
-        bool shouldOrbitAntiClockwise = ShipForwardDirection.AngleDir(directionToPlayer * -1) > 0;
-        float rotationAngle = shouldOrbitAntiClockwise ? (90 - angle) * 1.0f : (90 - angle) * -1.0f;
+        _isOrbitClockwise = ShipForwardDirection.AngleDir(directionToPlayer * -1) > 0;
+        float rotationAngle = _isOrbitClockwise ? (90 - angle) * 1.0f : (90 - angle) * -1.0f;
 
         Vector3 tangentRotation = new Vector3(0,0, rotationAngle);
         _playerRB.transform.Rotate(tangentRotation);
 
-        _shipOrbitCoroutine = StartCoroutine(OrbitAroundPlanet(orbitObject, orbitRadius, !shouldOrbitAntiClockwise));
-        _canSwipeMove = true;
+        _shipOrbitCoroutine = StartCoroutine(OrbitAroundPlanet(orbitObject, orbitRadius, _isOrbitClockwise));
+        _isOrbiting = true;
     }
 
     public void DestroyPlayer()
@@ -194,7 +202,7 @@ public class ShipController : MonoBehaviour
     private IEnumerator OrbitAroundPlanet(Transform orbitObject, float orbitRadius, bool isRotatingClockwise)
     {
         float degreesPerSecond = _shipSpeed / ((Mathf.PI * 2 * orbitRadius) / kDegreesInACircle);
-        if (!isRotatingClockwise)
+        if (isRotatingClockwise)
         {
             degreesPerSecond *= -1;
         }
@@ -219,6 +227,10 @@ public class ShipController : MonoBehaviour
     public ObstacleColour CurrentShieldColour
     {
         get { return _currentShieldColour; }
-        set { _currentShieldColour = value; }
+    }
+
+    public bool IsOrbiting
+    {
+        get { return _isOrbiting; }
     }
 }
