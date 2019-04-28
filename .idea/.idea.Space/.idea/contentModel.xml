@@ -49,6 +49,7 @@
           <e p="Utility" t="Include">
             <e p="CameraUtilities.cs" t="Include" />
             <e p="CoroutineManager.cs" t="Include" />
+            <e p="Math3d.cs" t="Include" />
             <e p="PhysicsLayers.cs" t="Include" />
             <e p="TagUtility.cs" t="Include" />
           </e>
