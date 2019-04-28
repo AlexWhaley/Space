@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class AsteroidFragmentsController : MonoBehaviour
 {
     private List<AsteroidFragment> _fragments = new List<AsteroidFragment>();
+    private Rigidbody2D _rb;
     private Transform _transform;
     [SerializeField]
     private Transform _fragmentsParent;
@@ -19,10 +21,12 @@ public class AsteroidFragmentsController : MonoBehaviour
         }
 
         _particleEffects = GetComponentsInChildren<ParticleSystem>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     public void FireFragments(Transform newTransform, Vector2 currentAsteroidVelocity, Vector2 playerTrajectory, ObstacleColour asteroidColour)
     {
+        _rb.velocity = currentAsteroidVelocity;
         _transform.position = newTransform.position;
         _transform.rotation = newTransform.rotation;
         
@@ -30,7 +34,7 @@ public class AsteroidFragmentsController : MonoBehaviour
         {
             fragment.FragmentSprite = SpriteManager.Instance.GetRandomAsteroidFragmentSprite(asteroidColour);
             fragment.Rigidbody.velocity = currentAsteroidVelocity;
-            fragment.Rigidbody.AddExplosionForce(20.0f, 5.0f, (Vector2)_transform.position - playerTrajectory.normalized * 1.5f, inverseDistanceModifier: true);
+            fragment.Rigidbody.AddExplosionForce(20.0f, 5.0f, (Vector2)_transform.position - playerTrajectory.normalized * 1.25f, inverseDistanceModifier: true);
 
             bool isSpinningClockwise = Random.Range(0, 2) == 0;
             fragment.Rigidbody.angularVelocity = isSpinningClockwise ? Random.Range(25.0f, 50.0f) : Random.Range(-50.0f, -25.0f);
@@ -45,7 +49,6 @@ public class AsteroidFragmentsController : MonoBehaviour
     {
         foreach (var fragment in _fragments)
         {
-            fragment.ResetPosition();
             fragment.ResetPosition();
         }
         foreach (var particle in _particleEffects)
