@@ -10,6 +10,7 @@ public class PhysicsLayers : MonoBehaviour
     public static int PlayerOrbit;
     public static int PlayerObstacle;
     public static int Shield;
+    public static int ShieldEnabler;
 
     private void Awake()
     {
@@ -18,5 +19,6 @@ public class PhysicsLayers : MonoBehaviour
         PlayerOrbit = LayerMask.NameToLayer("PlayerOrbit");
         PlayerObstacle = LayerMask.NameToLayer("PlayerObstacle");
         Shield = LayerMask.NameToLayer("Shield");
+        ShieldEnabler = LayerMask.NameToLayer("ShieldEnabler");
     }
 }

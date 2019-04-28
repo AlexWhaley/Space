@@ -10,9 +10,11 @@ public class ObstacleController : MonoBehaviour
     protected Collider2D _collider2D;
     protected ObstacleColour _colour;
     protected Color _originalSpriteColour;
+    private int _objectId;
 
     private void Awake()
     {
+        _objectId = GetInstanceID();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidBody = GetComponent<Rigidbody2D>();
         _collider2D = GetComponent<Collider2D>();
@@ -45,11 +47,10 @@ public class ObstacleController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         int triggerLayer = other.gameObject.layer;
+        var shipController = other.gameObject.GetComponentInParent<ShipController>();
         
         if (triggerLayer == PhysicsLayers.Shield)
         {
-            var shipController = other.gameObject.GetComponentInParent<ShipController>();
-            
             if (shipController.CurrentShieldColour == _colour)
             {
                 CollideWithPlayer(shipController.PlayerTransform.up);
@@ -57,14 +58,31 @@ public class ObstacleController : MonoBehaviour
         }
         else if (triggerLayer == PhysicsLayers.PlayerObstacle)
         {
-            var shipController = other.gameObject.GetComponentInParent<ShipController>();
             if (shipController.CurrentShieldColour != _colour)
             {
                 shipController.DestroyPlayer();
             }
         }
+        else if (triggerLayer == PhysicsLayers.ShieldEnabler)
+        {
+            shipController.AddPotentialCollision(_objectId, new PotentialCollision(transform, _rigidBody, _colour));
+        }
     }
-    
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        int triggerLayer = other.gameObject.layer;
+        var shipController = other.gameObject.GetComponentInParent<ShipController>();
+        
+        if (triggerLayer == PhysicsLayers.ShieldEnabler)
+        {
+            if (shipController.CurrentShieldColour != _colour)
+            {
+                shipController.RemovePotenialCollision(_objectId);
+            }
+        }
+    }
+
     public ObstacleColour Colour
     {
         get { return _colour; }

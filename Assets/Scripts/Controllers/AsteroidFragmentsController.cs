@@ -61,7 +61,6 @@ public class AsteroidFragmentsController : MonoBehaviour
         {
             particle.Stop();
         }
-        
     }
 }
 

@@ -49,6 +49,8 @@ public class ShipController : MonoBehaviour
     
     [SerializeField] private GameObject _shipObject;
     [SerializeField] private ColliderObject _orbitCollider;
+
+    private Dictionary<int, PotentialCollision> _potentialOjectCollisions = new Dictionary<int, PotentialCollision>();
     
     private void Awake()
     {
@@ -128,6 +130,7 @@ public class ShipController : MonoBehaviour
                 break;
         }
 
+        EnableShieldIfCollisionImminent();
         SetTrailColour();
     }
 
@@ -197,17 +200,74 @@ public class ShipController : MonoBehaviour
 
     private IEnumerator OrbitAroundPlanet(Transform orbitObject, float orbitRadius, bool isRotatingClockwise)
     {
-        float degreesPerSecond = _shipSpeed / ((Mathf.PI * 2 * orbitRadius) / kDegreesInACircle);
+        float degreesPerSecond = _shipSpeed / (Mathf.PI * 2 * orbitRadius / kDegreesInACircle);
         if (isRotatingClockwise)
         {
             degreesPerSecond *= -1;
         }
-
-
         while (true)
         {
             _playerRB.transform.RotateAround(orbitObject.transform.position, Vector3.forward, Time.fixedDeltaTime * degreesPerSecond);
             yield return new WaitForFixedUpdate();
+        }
+    }
+
+    public void AddPotentialCollision(int objectId, PotentialCollision potentialCollision)
+    {
+        Debug.Log("Object added to potential collisions.");
+        _potentialOjectCollisions[objectId] = potentialCollision;
+        EnableShieldIfCollisionImminent();
+    }
+
+    public void RemovePotenialCollision(int objectId)
+    {
+        Debug.Log("Object removed from potential collisions.");
+        _potentialOjectCollisions.Remove(objectId);
+    }
+
+    private void EnableShieldIfCollisionImminent()
+    {
+        bool enableShield = false;
+        
+        foreach (var potentialCollision in _potentialOjectCollisions.Values)
+        {
+            if (potentialCollision.ObstacleColour == _currentShieldColour)
+            {
+                Vector3 intersection;
+                Vector3 playerPosition = PlayerTransform.position;
+                Vector3 potentialCollisionObjectPosition = potentialCollision.Transform.position;
+                
+                Math3d.LineLineIntersection(out intersection, playerPosition, ShipForwardDirection,
+                    potentialCollisionObjectPosition, potentialCollision.Rigidbody.velocity.normalized);
+
+                Vector2 intersectionPlayerDiff = intersection - playerPosition;
+
+                float dotProduct = Vector2.Dot(ShipForwardDirection, intersectionPlayerDiff.normalized);
+                
+                if (dotProduct > 0.0f)
+                {
+                    // Point of intersection is ahead of ship
+                    float collisionObjectDistanceToIntersection = Vector2.Distance(potentialCollisionObjectPosition, intersection);
+                    float playerDistanceToIntersection = Vector2.Distance(playerPosition, intersection);
+
+                    var intersectionDifferenceDiff = Mathf.Abs(collisionObjectDistanceToIntersection - playerDistanceToIntersection);
+                    Debug.Log(intersectionDifferenceDiff);
+                    if (intersectionDifferenceDiff < 4.0f)
+                    {
+                        enableShield = true;
+                    }
+                }
+            }
+
+            if (enableShield)
+            {
+                break;
+            }
+        }
+
+        if (enableShield)
+        {
+            ActivateShield();
         }
     }
 
@@ -233,5 +293,19 @@ public class ShipController : MonoBehaviour
     public Transform PlayerTransform
     {
         get { return _playerRB.transform; }
+    }
+}
+
+public class PotentialCollision
+{
+    public Transform Transform { get; private set; }
+    public Rigidbody2D Rigidbody { get; private set; }
+    public ObstacleColour ObstacleColour { get; private set; }
+
+    public PotentialCollision(Transform transform, Rigidbody2D rigidbody, ObstacleColour obstacleColour)
+    {
+        Transform = transform;
+        Rigidbody = rigidbody;
+        ObstacleColour = obstacleColour;
     }
 }
