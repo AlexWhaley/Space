@@ -52,7 +52,7 @@ public class InputManager : MonoBehaviour
     {
         _mainCamera = Camera.main;
         _currentControlSchemeChangeHoldTime = ControlSchemeChangeHoldTime;
-        _currentControlScheme = ControlScheme.OneTouchMoveToTap;
+        _currentControlScheme = ControlScheme.SwipeToMove;
         _shipController = ShipController.Instance;
     }
 

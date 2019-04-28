@@ -5,14 +5,20 @@ public class AsteroidFragmentsController : MonoBehaviour
 {
     private List<AsteroidFragment> _fragments = new List<AsteroidFragment>();
     private Transform _transform;
+    [SerializeField]
+    private Transform _fragmentsParent;
+
+    private ParticleSystem[] _particleEffects;
 
     private void Awake()
     {
         _transform = transform;
-        foreach (Transform child in transform)
+        foreach (Transform child in _fragmentsParent)
         {
             _fragments.Add(new AsteroidFragment(child));
         }
+
+        _particleEffects = GetComponentsInChildren<ParticleSystem>();
     }
 
     public void FireFragments(Transform newTransform, Vector2 currentAsteroidVelocity, Vector2 playerTrajectory, ObstacleColour asteroidColour)
@@ -29,6 +35,10 @@ public class AsteroidFragmentsController : MonoBehaviour
             bool isSpinningClockwise = Random.Range(0, 2) == 0;
             fragment.Rigidbody.angularVelocity = isSpinningClockwise ? Random.Range(25.0f, 50.0f) : Random.Range(-50.0f, -25.0f);
         }
+        foreach (var particle in _particleEffects)
+        {
+            particle.Play();
+        }
     }
 
     public void ResetFragments()
@@ -36,7 +46,13 @@ public class AsteroidFragmentsController : MonoBehaviour
         foreach (var fragment in _fragments)
         {
             fragment.ResetPosition();
+            fragment.ResetPosition();
         }
+        foreach (var particle in _particleEffects)
+        {
+            particle.Stop();
+        }
+        
     }
 }
 

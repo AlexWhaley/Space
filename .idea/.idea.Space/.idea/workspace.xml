@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b4bd946-f016-4c3e-ae06-e07f8239a823" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Space/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Space/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Space/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Animations/ShipAnimations/ShipAnimatorController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Animations/ShipAnimations/ShipAnimatorController.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Gameplay/Collectables/StarCollectable.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Gameplay/Collectables/StarCollectable.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Gameplay/Collectables/StarCollectable.controller.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Gameplay/Collectables/StarCollectable.controller.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Gameplay/Collectables/StarCollectableAnim.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Gameplay/Collectables/StarCollectableAnim.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Gameplay/Collectables/collectable.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Gameplay/Collectables/collectable.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Gameplay/Obstacles/Asteroids/AsteroidFragmentB.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Gameplay/Obstacles/Asteroids/AsteroidFragmentB.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Gameplay/Obstacles/Asteroids/AsteroidFragmentY.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Gameplay/Obstacles/Asteroids/AsteroidFragmentY.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Managers/ObjectPoolManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Managers/ObjectPoolManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/AsteroidController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/AsteroidController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/ObstacleController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/ObstacleController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/ShipController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/ShipController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/ObjectPoolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/ObjectPoolManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/SpriteManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/SpriteManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spawners/AsteroidSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spawners/AsteroidSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/pfAsteroidFragments.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/pfAsteroidFragments.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/AsteroidFragmentsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/AsteroidFragmentsController.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +40,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Spawners/AsteroidSpawner.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1512">
+            <state relative-caret-position="264">
               <caret line="71" column="92" selection-start-line="71" selection-start-column="92" selection-end-line="71" selection-end-column="92" />
               <folding>
                 <marker date="1555767661424" expanded="false" signature="6:97" ph="..." />
@@ -79,22 +64,23 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/AsteroidFragmentsController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="5" column="77" selection-start-line="5" selection-start-column="77" selection-end-line="5" selection-end-column="77" />
+            <state relative-caret-position="720">
+              <caret line="40" column="21" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
               <folding>
-                <marker date="1555766004602" expanded="false" signature="6:52" ph="..." />
-                <marker date="1555766004602" expanded="true" signature="110:1439" ph="{...}" />
-                <marker date="1555766004602" expanded="true" signature="250:418" ph="{...}" />
-                <marker date="1555766004602" expanded="true" signature="335:412" ph="{...}" />
-                <marker date="1555766004602" expanded="true" signature="563:1288" ph="{...}" />
-                <marker date="1555766004602" expanded="true" signature="729:1282" ph="{...}" />
-                <marker date="1555766004602" expanded="true" signature="1322:1437" ph="{...}" />
-                <marker date="1555766004602" expanded="true" signature="1373:1431" ph="{...}" />
-                <marker date="1555766004602" expanded="true" signature="1470:2435" ph="{...}" />
-                <marker date="1555766004602" expanded="true" signature="1732:2020" ph="{...}" />
-                <marker date="1555766004602" expanded="true" signature="2054:2101" ph="{...}" />
-                <marker date="1555766004602" expanded="true" signature="2135:2195" ph="{...}" />
-                <marker date="1555766004602" expanded="true" signature="2228:2433" ph="{...}" />
+                <marker date="1556460351166" expanded="false" signature="6:52" ph="..." />
+                <marker date="1556460351166" expanded="true" signature="110:1720" ph="{...}" />
+                <marker date="1556460351166" expanded="true" signature="359:605" ph="{...}" />
+                <marker date="1556460351166" expanded="true" signature="451:528" ph="{...}" />
+                <marker date="1556460351166" expanded="true" signature="750:1569" ph="{...}" />
+                <marker date="1556460351166" expanded="true" signature="916:1469" ph="{...}" />
+                <marker date="1556460351166" expanded="true" signature="1521:1563" ph="{...}" />
+                <marker date="1556460351166" expanded="true" signature="1603:1718" ph="{...}" />
+                <marker date="1556460351166" expanded="true" signature="1654:1712" ph="{...}" />
+                <marker date="1556460351166" expanded="true" signature="1751:2716" ph="{...}" />
+                <marker date="1556460351166" expanded="true" signature="2013:2301" ph="{...}" />
+                <marker date="1556460351166" expanded="true" signature="2335:2382" ph="{...}" />
+                <marker date="1556460351166" expanded="true" signature="2416:2476" ph="{...}" />
+                <marker date="1556460351166" expanded="true" signature="2509:2714" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -341,9 +327,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ObstacleController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Extensions/Rigidbody2DExtensions.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Managers/SpriteManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/AsteroidFragmentsController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/AsteroidController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Spawners/AsteroidSpawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/AsteroidFragmentsController.cs" />
       </list>
     </option>
   </component>
@@ -415,12 +401,12 @@
       <workItem from="1555583604701" duration="5542000" />
       <workItem from="1555698941956" duration="6728000" />
       <workItem from="1555753199187" duration="12502000" />
-      <workItem from="1556457458913" duration="316000" />
+      <workItem from="1556457458913" duration="1061000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86571000" />
+    <option name="totallyTimeSpent" value="87316000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -983,7 +969,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Spawners/AsteroidSpawner.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1512">
+        <state relative-caret-position="264">
           <caret line="71" column="92" selection-start-line="71" selection-start-column="92" selection-end-line="71" selection-end-column="92" />
           <folding>
             <marker date="1555767661424" expanded="false" signature="6:97" ph="..." />
@@ -1005,22 +991,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/AsteroidFragmentsController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="5" column="77" selection-start-line="5" selection-start-column="77" selection-end-line="5" selection-end-column="77" />
+        <state relative-caret-position="720">
+          <caret line="40" column="21" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
           <folding>
-            <marker date="1555766004602" expanded="false" signature="6:52" ph="..." />
-            <marker date="1555766004602" expanded="true" signature="110:1439" ph="{...}" />
-            <marker date="1555766004602" expanded="true" signature="250:418" ph="{...}" />
-            <marker date="1555766004602" expanded="true" signature="335:412" ph="{...}" />
-            <marker date="1555766004602" expanded="true" signature="563:1288" ph="{...}" />
-            <marker date="1555766004602" expanded="true" signature="729:1282" ph="{...}" />
-            <marker date="1555766004602" expanded="true" signature="1322:1437" ph="{...}" />
-            <marker date="1555766004602" expanded="true" signature="1373:1431" ph="{...}" />
-            <marker date="1555766004602" expanded="true" signature="1470:2435" ph="{...}" />
-            <marker date="1555766004602" expanded="true" signature="1732:2020" ph="{...}" />
-            <marker date="1555766004602" expanded="true" signature="2054:2101" ph="{...}" />
-            <marker date="1555766004602" expanded="true" signature="2135:2195" ph="{...}" />
-            <marker date="1555766004602" expanded="true" signature="2228:2433" ph="{...}" />
+            <marker date="1556460351166" expanded="false" signature="6:52" ph="..." />
+            <marker date="1556460351166" expanded="true" signature="110:1720" ph="{...}" />
+            <marker date="1556460351166" expanded="true" signature="359:605" ph="{...}" />
+            <marker date="1556460351166" expanded="true" signature="451:528" ph="{...}" />
+            <marker date="1556460351166" expanded="true" signature="750:1569" ph="{...}" />
+            <marker date="1556460351166" expanded="true" signature="916:1469" ph="{...}" />
+            <marker date="1556460351166" expanded="true" signature="1521:1563" ph="{...}" />
+            <marker date="1556460351166" expanded="true" signature="1603:1718" ph="{...}" />
+            <marker date="1556460351166" expanded="true" signature="1654:1712" ph="{...}" />
+            <marker date="1556460351166" expanded="true" signature="1751:2716" ph="{...}" />
+            <marker date="1556460351166" expanded="true" signature="2013:2301" ph="{...}" />
+            <marker date="1556460351166" expanded="true" signature="2335:2382" ph="{...}" />
+            <marker date="1556460351166" expanded="true" signature="2416:2476" ph="{...}" />
+            <marker date="1556460351166" expanded="true" signature="2509:2714" ph="{...}" />
           </folding>
         </state>
       </provider>
