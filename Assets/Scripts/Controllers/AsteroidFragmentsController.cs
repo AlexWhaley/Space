@@ -9,7 +9,12 @@ public class AsteroidFragmentsController : MonoBehaviour
     private Transform _transform;
     [SerializeField]
     private Transform _fragmentsParent;
-
+    [SerializeField]
+    private Color _blueFragmentColor;
+    [SerializeField]
+    private Color _yellowFragmentColor;
+    [SerializeField]
+    private ParticleSystem _starburstParticleSystem;
     private ParticleSystem[] _particleEffects;
 
     private void Awake()
@@ -29,7 +34,8 @@ public class AsteroidFragmentsController : MonoBehaviour
         _rb.velocity = currentAsteroidVelocity;
         _transform.position = newTransform.position;
         _transform.rotation = newTransform.rotation;
-        
+        _starburstParticleSystem.startColor = asteroidColour == ObstacleColour.Blue ? _blueFragmentColor : _yellowFragmentColor;
+
         foreach (var fragment in _fragments)
         {
             fragment.FragmentSprite = SpriteManager.Instance.GetRandomAsteroidFragmentSprite(asteroidColour);
