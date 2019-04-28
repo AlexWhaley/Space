@@ -65,10 +65,7 @@ public class ObstacleController : MonoBehaviour
         }
         else if (triggerLayer == PhysicsLayers.ShieldEnabler)
         {
-            if (shipController.CurrentShieldColour != _colour)
-            {
-                shipController.AddPotentialCollision(_objectId, new PotentialCollision(transform, _rigidBody, _colour));
-            }
+            shipController.AddPotentialCollision(_objectId, new PotentialCollision(transform, _rigidBody, _colour));
         }
     }
 

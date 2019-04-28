@@ -425,7 +425,7 @@ public class Math3d {
 		float planarFactor = Vector3.Dot(lineVec3, crossVec1and2);
  
 		//is coplanar, and not parrallel
-		if(Mathf.Abs(planarFactor) < 0.0001f && crossVec1and2.sqrMagnitude > 0.0001f)
+		if (crossVec1and2.sqrMagnitude > 0.0001f)
 		{
 			float s = Vector3.Dot(crossVec3and2, crossVec1and2) / crossVec1and2.sqrMagnitude;
 			intersection = linePoint1 + (lineVec1 * s);

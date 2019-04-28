@@ -214,12 +214,14 @@ public class ShipController : MonoBehaviour
 
     public void AddPotentialCollision(int objectId, PotentialCollision potentialCollision)
     {
+        Debug.Log("Object added to potential collisions.");
         _potentialOjectCollisions[objectId] = potentialCollision;
         EnableShieldIfCollisionImminent();
     }
 
     public void RemovePotenialCollision(int objectId)
     {
+        Debug.Log("Object removed from potential collisions.");
         _potentialOjectCollisions.Remove(objectId);
     }
 
@@ -236,16 +238,21 @@ public class ShipController : MonoBehaviour
                 Vector3 potentialCollisionObjectPosition = potentialCollision.Transform.position;
                 
                 Math3d.LineLineIntersection(out intersection, playerPosition, ShipForwardDirection,
-                    potentialCollisionObjectPosition, potentialCollision.Rigidbody.velocity);
+                    potentialCollisionObjectPosition, potentialCollision.Rigidbody.velocity.normalized);
 
                 Vector2 intersectionPlayerDiff = intersection - playerPosition;
 
-                if (Vector2.Dot(ShipForwardDirection, intersectionPlayerDiff) > 0.0f)
+                float dotProduct = Vector2.Dot(ShipForwardDirection, intersectionPlayerDiff.normalized);
+                
+                if (dotProduct > 0.0f)
                 {
                     // Point of intersection is ahead of ship
                     float collisionObjectDistanceToIntersection = Vector2.Distance(potentialCollisionObjectPosition, intersection);
                     float playerDistanceToIntersection = Vector2.Distance(playerPosition, intersection);
-                    if (Mathf.Abs(collisionObjectDistanceToIntersection - playerDistanceToIntersection) > 5.0f)
+
+                    var intersectionDifferenceDiff = Mathf.Abs(collisionObjectDistanceToIntersection - playerDistanceToIntersection);
+                    Debug.Log(intersectionDifferenceDiff);
+                    if (intersectionDifferenceDiff < 4.0f)
                     {
                         enableShield = true;
                     }

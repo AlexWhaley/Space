@@ -20,7 +20,7 @@ TagManager:
   - PlayerObstacle
   - Shield
   - ScreenEdges
-  - 
+  - ShieldEnabler
   - 
   - 
   - 
