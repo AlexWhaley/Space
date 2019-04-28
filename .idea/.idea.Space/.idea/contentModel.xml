@@ -9,6 +9,7 @@
         <e p="Scripts" t="Include">
           <e p="Controllers" t="Include">
             <e p="AsteroidController.cs" t="Include" />
+            <e p="AsteroidFragmentsController.cs" t="Include" />
             <e p="BackgroundController.cs" t="Include" />
             <e p="CameraController.cs" t="Include" />
             <e p="LevelSpawnerController.cs" t="Include" />
@@ -18,12 +19,14 @@
           </e>
           <e p="Data" t="Include">
             <e p="Asteroid.cs" t="Include" />
+            <e p="AsteroidFragments.cs" t="Include" />
             <e p="Obstacle.cs" t="Include" />
             <e p="PlanetData.cs" t="Include" />
             <e p="StarData.cs" t="Include" />
           </e>
           <e p="Extensions" t="Include">
             <e p="ListExtensions.cs" t="Include" />
+            <e p="Rigidbody2DExtensions.cs" t="Include" />
             <e p="VectorExtensions.cs" t="Include" />
           </e>
           <e p="Managers" t="Include">

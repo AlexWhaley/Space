@@ -24,6 +24,8 @@ public class ObstacleController : MonoBehaviour
         _colour = colour;
     }
 
+    protected virtual void DestroyObstacle(Vector2 playerTrajectory){}
+
     public void HideObstacle()
     {
         _rigidBody.velocity = Vector2.zero;
@@ -46,9 +48,11 @@ public class ObstacleController : MonoBehaviour
         
         if (triggerLayer == PhysicsLayers.Shield)
         {
-            if (other.gameObject.GetComponentInParent<ShipController>().CurrentShieldColour == _colour)
+            var shipController = other.gameObject.GetComponentInParent<ShipController>();
+            
+            if (shipController.CurrentShieldColour == _colour)
             {
-                HideObstacle();
+                CollideWithPlayer(shipController.PlayerTransform.up);
             }
         }
         else if (triggerLayer == PhysicsLayers.PlayerObstacle)
@@ -66,9 +70,10 @@ public class ObstacleController : MonoBehaviour
         get { return _colour; }
     }
 
-    public void CollideWithPlayer()
+    public void CollideWithPlayer(Vector2 playerTrajectory)
     {
        // Spawn collision elements
+       DestroyObstacle(playerTrajectory);
        HideObstacle();
     }
 }

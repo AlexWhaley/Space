@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using ObjectPools;
+using UnityEngine;
 
 public class ObjectPoolManager : MonoBehaviour
 {
@@ -31,9 +32,27 @@ public class ObjectPoolManager : MonoBehaviour
     {
         get { return _asteroidPool; }
     }
+    
+    [SerializeField]
+    private AsteroidFragmentsObjectPool _asteroidFragmentsObjectPool;
+
+    public AsteroidFragmentsObjectPool AsteroidFragmentsObjectPool
+    {
+        get { return _asteroidFragmentsObjectPool; }
+    }
 }
 
-[System.Serializable]
-public class AsteroidObjectPool : ObjectPool<Asteroid>
+namespace ObjectPools
 {
+    [System.Serializable]
+    public class AsteroidObjectPool : ObjectPool<Asteroid>
+    {
+    }
+
+    [System.Serializable]
+    public class AsteroidFragmentsObjectPool : ObjectPool<AsteroidFragments>
+    {
+    }
 }
+
+

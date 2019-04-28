@@ -15,11 +15,7 @@ public class ShipController : MonoBehaviour
     }
 
     private Rigidbody2D _playerRB;
-    public Transform PlayerTransform
-    {
-        get { return _playerRB.transform; }
-    }
-
+    
     [SerializeField]
     private Animator _shipAnimator;
     [SerializeField]
@@ -232,5 +228,10 @@ public class ShipController : MonoBehaviour
     public bool IsOrbiting
     {
         get { return _isOrbiting; }
+    }
+
+    public Transform PlayerTransform
+    {
+        get { return _playerRB.transform; }
     }
 }
