@@ -11,6 +11,7 @@ public class ObstacleController : MonoBehaviour
     protected ObstacleColour _colour;
     protected Color _originalSpriteColour;
     private int _objectId;
+    private float colliderRadius;
 
     private void Awake()
     {
@@ -19,6 +20,12 @@ public class ObstacleController : MonoBehaviour
         _rigidBody = GetComponent<Rigidbody2D>();
         _collider2D = GetComponent<Collider2D>();
         _originalSpriteColour = _spriteRenderer.color;
+
+        var circleCollider = _collider2D as CircleCollider2D;
+        if (circleCollider != null)
+        {
+            colliderRadius = circleCollider.radius;
+        }
     }
 
     public virtual void SetColour(ObstacleColour colour)
@@ -53,6 +60,7 @@ public class ObstacleController : MonoBehaviour
         {
             if (shipController.CurrentShieldColour == _colour)
             {
+                shipController.RemovePotenialCollision(_objectId);
                 CollideWithPlayer(shipController.PlayerTransform.up);
             }
         }
@@ -65,7 +73,7 @@ public class ObstacleController : MonoBehaviour
         }
         else if (triggerLayer == PhysicsLayers.ShieldEnabler)
         {
-            shipController.AddPotentialCollision(_objectId, new PotentialCollision(transform, _rigidBody, _colour));
+            shipController.AddPotentialCollision(_objectId, new PotentialCollision(transform, _rigidBody, _colour, colliderRadius));
         }
     }
 
@@ -76,10 +84,7 @@ public class ObstacleController : MonoBehaviour
         
         if (triggerLayer == PhysicsLayers.ShieldEnabler)
         {
-            if (shipController.CurrentShieldColour != _colour)
-            {
-                shipController.RemovePotenialCollision(_objectId);
-            }
+            shipController.RemovePotenialCollision(_objectId);
         }
     }
 

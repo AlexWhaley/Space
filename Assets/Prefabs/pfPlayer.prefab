@@ -432,6 +432,7 @@ MonoBehaviour:
   _yellowTrailColor: {r: 1, g: 0.882353, b: 0.1764706, a: 1}
   _shipObject: {fileID: 1008904657162500837}
   _orbitCollider: {fileID: 8920673786807288494}
+  _shieldCollider: {fileID: 4755180148294421776}
 --- !u!1 &1008904657162500837
 GameObject:
   m_ObjectHideFlags: 0

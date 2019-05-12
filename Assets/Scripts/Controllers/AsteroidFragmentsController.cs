@@ -40,7 +40,7 @@ public class AsteroidFragmentsController : MonoBehaviour
         {
             fragment.FragmentSprite = SpriteManager.Instance.GetRandomAsteroidFragmentSprite(asteroidColour);
             fragment.Rigidbody.velocity = currentAsteroidVelocity;
-            fragment.Rigidbody.AddExplosionForce(20.0f, 5.0f, (Vector2)_transform.position - playerTrajectory.normalized * 1.25f, inverseDistanceModifier: true);
+            fragment.Rigidbody.AddExplosionForce(20.0f, 5.0f, (Vector2)_transform.position - playerTrajectory.normalized * 0.5f, inverseDistanceModifier: true);
 
             bool isSpinningClockwise = Random.Range(0, 2) == 0;
             fragment.Rigidbody.angularVelocity = isSpinningClockwise ? Random.Range(25.0f, 50.0f) : Random.Range(-50.0f, -25.0f);

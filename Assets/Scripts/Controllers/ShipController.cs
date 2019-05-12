@@ -49,6 +49,9 @@ public class ShipController : MonoBehaviour
     
     [SerializeField] private GameObject _shipObject;
     [SerializeField] private ColliderObject _orbitCollider;
+    [SerializeField] private CircleCollider2D _shieldCollider;
+
+    private float shieldColliderRadius;
 
     private Dictionary<int, PotentialCollision> _potentialOjectCollisions = new Dictionary<int, PotentialCollision>();
     
@@ -70,6 +73,7 @@ public class ShipController : MonoBehaviour
     private void Initialise()
     {
         _playerRB = GetComponent<Rigidbody2D>();
+        shieldColliderRadius = _shieldCollider.radius;
     }
 
     private void Start()
@@ -228,7 +232,7 @@ public class ShipController : MonoBehaviour
     private void EnableShieldIfCollisionImminent()
     {
         bool enableShield = false;
-        
+        Debug.Log(_potentialOjectCollisions.Count);
         foreach (var potentialCollision in _potentialOjectCollisions.Values)
         {
             if (potentialCollision.ObstacleColour == _currentShieldColour)
@@ -240,22 +244,16 @@ public class ShipController : MonoBehaviour
                 Math3d.LineLineIntersection(out intersection, playerPosition, ShipForwardDirection,
                     potentialCollisionObjectPosition, potentialCollision.Rigidbody.velocity.normalized);
 
-                Vector2 intersectionPlayerDiff = intersection - playerPosition;
+                //float playerDotProduct = Vector2.Dot(ShipForwardDirection, intersectionPlayerDiff.normalized);
+                float playerDistanceToIntersection = Vector2.Distance(playerPosition, intersection);
+                float playerTimeToIntersection = playerDistanceToIntersection / _playerRB.velocity.magnitude;
 
-                float dotProduct = Vector2.Dot(ShipForwardDirection, intersectionPlayerDiff.normalized);
-                
-                if (dotProduct > 0.0f)
+                Vector2 collisionObjectPositionAtIntersectionTime = (Vector2)potentialCollisionObjectPosition + potentialCollision.Rigidbody.velocity * playerTimeToIntersection;
+
+                var intersectionDifferenceDiff = Mathf.Abs(((Vector2)intersection - collisionObjectPositionAtIntersectionTime).magnitude);
+                if (intersectionDifferenceDiff < potentialCollision.ColliderRadius + shieldColliderRadius + 0.125f)
                 {
-                    // Point of intersection is ahead of ship
-                    float collisionObjectDistanceToIntersection = Vector2.Distance(potentialCollisionObjectPosition, intersection);
-                    float playerDistanceToIntersection = Vector2.Distance(playerPosition, intersection);
-
-                    var intersectionDifferenceDiff = Mathf.Abs(collisionObjectDistanceToIntersection - playerDistanceToIntersection);
-                    Debug.Log(intersectionDifferenceDiff);
-                    if (intersectionDifferenceDiff < 4.0f)
-                    {
-                        enableShield = true;
-                    }
+                    enableShield = true;
                 }
             }
 
@@ -301,11 +299,13 @@ public class PotentialCollision
     public Transform Transform { get; private set; }
     public Rigidbody2D Rigidbody { get; private set; }
     public ObstacleColour ObstacleColour { get; private set; }
+    public float ColliderRadius { get; private set; }
 
-    public PotentialCollision(Transform transform, Rigidbody2D rigidbody, ObstacleColour obstacleColour)
+    public PotentialCollision(Transform transform, Rigidbody2D rigidbody, ObstacleColour obstacleColour, float colliderRadius)
     {
         Transform = transform;
         Rigidbody = rigidbody;
         ObstacleColour = obstacleColour;
+        ColliderRadius = colliderRadius;
     }
 }
