@@ -30,5 +30,5 @@ public class PlanetData
             ObstacleSpawners[0] = null;
             ObstacleSpawners.RemoveAt(0);
         }
-    }
+    } 
 }

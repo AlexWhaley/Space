@@ -40,6 +40,14 @@ public class ObjectPoolManager : MonoBehaviour
     {
         get { return _asteroidFragmentsObjectPool; }
     }
+    
+    [SerializeField]
+    private SatelliteObjectPool _satelliteObjectPool;
+
+    public SatelliteObjectPool SatelliteObjectPool
+    {
+        get { return _satelliteObjectPool; }
+    }
 }
 
 namespace ObjectPools
@@ -51,6 +59,11 @@ namespace ObjectPools
 
     [System.Serializable]
     public class AsteroidFragmentsObjectPool : ObjectPool<AsteroidFragments>
+    {
+    }
+    
+    [System.Serializable]
+    public class SatelliteObjectPool : ObjectPool<Satellite>
     {
     }
 }

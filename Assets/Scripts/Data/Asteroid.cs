@@ -6,3 +6,9 @@ using UnityEngine;
 public class Asteroid : Obstacle<AsteroidController>
 {
 }
+
+[System.Serializable]
+public class Satellite : Obstacle<SatelliteController>
+{
+}
+

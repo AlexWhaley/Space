@@ -54,6 +54,9 @@ public class ShipController : MonoBehaviour
     private float shieldColliderRadius;
 
     private Dictionary<int, PotentialCollision> _potentialOjectCollisions = new Dictionary<int, PotentialCollision>();
+
+    private float _startPosY;
+    private float _highestPosy;
     
     private void Awake()
     {
@@ -74,6 +77,7 @@ public class ShipController : MonoBehaviour
     {
         _playerRB = GetComponent<Rigidbody2D>();
         shieldColliderRadius = _shieldCollider.radius;
+        _startPosY = transform.position.y;
     }
 
     private void Start()
@@ -93,6 +97,15 @@ public class ShipController : MonoBehaviour
         
         SetTrailColour();
         MoveShip(ShipForwardDirection);
+    }
+
+    private void Update()
+    {
+        var currentPositionY = transform.position.y;
+        if (currentPositionY > _highestPosy)
+        {
+            _highestPosy = currentPositionY;
+        }
     }
 
     private Vector3 ShipForwardDirection
@@ -292,6 +305,8 @@ public class ShipController : MonoBehaviour
     {
         get { return _playerRB.transform; }
     }
+
+    public float DistanceTravelled => _highestPosy - _startPosY;
 }
 
 public class PotentialCollision

@@ -41,6 +41,11 @@ public class LevelSpawnerController : MonoBehaviour
     private float _minimumXSeperation = 10.0f;
     private Vector3 _currentPlanetSpawnLocation = new Vector3(0.0f, 0.0f, 1.0f);
 
+    [SerializeField] 
+    private float _planetOrbitObstacleRotationMin = 2.0f;
+    [SerializeField] 
+    private float _planetOrbitObstacleRotationMax = 4.0f;
+
     private List<PlanetData> _planetList;
     private List<PlanetData> _smallPlanetPool;
     private List<PlanetData> _bigPlanetPool;
@@ -91,7 +96,7 @@ public class LevelSpawnerController : MonoBehaviour
 
         PlanetData initialPlanet = GetPooledBigPlanet();
         initialPlanet.PositionVariation = new Vector2(_currentPlanetSpawnLocation.x, _currentPlanetSpawnLocation.y);
-        initialPlanet.PlanetController.SetPositionAndSprite(_currentPlanetSpawnLocation, SpriteManager.Instance.GetRandomPlanetSprite(initialPlanet.IsSmallPlanet));
+        initialPlanet.PlanetController.SetupPlanet(_currentPlanetSpawnLocation, SpriteManager.Instance.GetRandomPlanetSprite(initialPlanet.IsSmallPlanet), GetRandomOrbitObstacleRotationValue);
 
         _planetList.Add(initialPlanet);
 
@@ -102,6 +107,8 @@ public class LevelSpawnerController : MonoBehaviour
 
         _sectionSpawnRoutine = StartCoroutine(SectionSpawnRoutine());
     }
+
+    private float GetRandomOrbitObstacleRotationValue => Random.Range(_planetOrbitObstacleRotationMin, _planetOrbitObstacleRotationMax);
 
     private void CreatePlanetPools()
     {
@@ -135,7 +142,7 @@ public class LevelSpawnerController : MonoBehaviour
         planet.PositionVariation = new Vector2(_currentPlanetSpawnLocation.x, yIncrement);
         
         // TODO - When object pooled the getter should fetch the random sprite
-        planet.PlanetController.SetPositionAndSprite(_currentPlanetSpawnLocation, SpriteManager.Instance.GetRandomPlanetSprite(planet.IsSmallPlanet));
+        planet.PlanetController.SetupPlanet(_currentPlanetSpawnLocation, SpriteManager.Instance.GetRandomPlanetSprite(planet.IsSmallPlanet), GetRandomOrbitObstacleRotationValue);
 
         _planetList.Add(planet);
         CreatePlanetObstacles(planet,1.0f);
@@ -153,10 +160,24 @@ public class LevelSpawnerController : MonoBehaviour
 
     private void CreatePlanetObstacles(PlanetData newPlanet, float difficultyModifier)
     {
-        var obstacleBeltCount = Random.Range(1, 2);
+        CreateBeltObstacles(newPlanet, difficultyModifier);
+        CreateOrbitItems(newPlanet);
+        _isLeftTrajectory = !_isLeftTrajectory;
+    }
+
+    private void CreateOrbitItems(PlanetData newPlanet)
+    {
+        var obstacleCount = Random.Range(2, 5);
+        var orbitObstacleSpawner = new OrbitObstacleSpawner(newPlanet, obstacleCount, 0);
+        newPlanet.ObstacleSpawners.Add(orbitObstacleSpawner);
+    }
+
+    private void CreateBeltObstacles(PlanetData newPlanet, float difficultyModifier)
+    {
         var previousPlanet = _planetList[_planetList.Count - 2];
         var previousPlanetPosition = previousPlanet.PlanetObject.transform.position;
         var normalizedPlanetPath = (_currentPlanetSpawnLocation - previousPlanetPosition).normalized;
+        var obstacleBeltCount = Random.Range(1, 2);
 
         Vector2 useablePathMin = previousPlanetPosition + (previousPlanet.OrbitRadius + 1.0f) * normalizedPlanetPath;
         Vector2 useablePathMax = _currentPlanetSpawnLocation - (newPlanet.OrbitRadius + 1.0f) * normalizedPlanetPath;
@@ -166,8 +187,6 @@ public class LevelSpawnerController : MonoBehaviour
             var spawnPosition = useablePathMin + (useablePathMax - useablePathMin) * i / (obstacleBeltCount + 1);
             CreateBelt(newPlanet, spawnPosition, normalizedPlanetPath);
         }
-        
-        _isLeftTrajectory = !_isLeftTrajectory;
     }
 
     private void CreateBelt(PlanetData planet, Vector2 spawnPosition, Vector2 planetPath)

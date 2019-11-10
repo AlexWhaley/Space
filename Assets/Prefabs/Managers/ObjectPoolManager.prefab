@@ -60,6 +60,7 @@ Transform:
   m_Children:
   - {fileID: 4575665983835354}
   - {fileID: 6134964943180681383}
+  - {fileID: 8356217444539069260}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -85,6 +86,41 @@ MonoBehaviour:
       type: 3}
     _poolParent: {fileID: 6134964943180681383}
     _quanitityOfInstancesOnStart: 0
+  _satelliteObjectPool:
+    _objectPrefab: {fileID: 1708489766914102, guid: 97eaf8093bbf15847b414e2d7dd117b6,
+      type: 3}
+    _poolParent: {fileID: 8356217444539069260}
+    _quanitityOfInstancesOnStart: 0
+--- !u!1 &3847588766042995070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8356217444539069260}
+  m_Layer: 0
+  m_Name: SatelliteObjectPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8356217444539069260
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3847588766042995070}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1000, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4708325466108794}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7129351930518937060
 GameObject:
   m_ObjectHideFlags: 0
