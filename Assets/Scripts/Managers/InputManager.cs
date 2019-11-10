@@ -53,7 +53,7 @@ public class InputManager : MonoBehaviour
         _mainCamera = Camera.main;
         _currentControlSchemeChangeHoldTime = ControlSchemeChangeHoldTime;
 #if UNITY_EDITOR
-        _currentControlScheme = ControlScheme.OneTouchMoveToTap;
+        _currentControlScheme = ControlScheme.SwipeToMove;
 #else
         _currentControlScheme = ControlScheme.SwipeToMove;
 #endif

@@ -43,7 +43,12 @@ public class SpriteManager : MonoBehaviour
     private List<Sprite> _blueAsteroidFragmentSprites = new List<Sprite>(4);
     [SerializeField]
     private List<Sprite> _yellowAsteroidFragmentSprites = new List<Sprite>(4);
-
+    
+    [Header("Satellite Sprites")]
+    [SerializeField]
+    private List<Sprite> _blueSatelliteSprites = new List<Sprite>(1);
+    [SerializeField]
+    private List<Sprite> _yellowSatelliteSprites = new List<Sprite>(1);
 
     private enum PlanetColours
     {
@@ -125,6 +130,15 @@ public class SpriteManager : MonoBehaviour
         return colour == ObstacleColour.Blue
             ? _blueAsteroidSprites[randomSpriteIndex]
             : _yellowAsteroidSprites[randomSpriteIndex];
+    }
+
+    public Sprite GetRandomSatelliteSprite(ObstacleColour colour)
+    {
+        int randomSpriteIndex = Random.Range(0, _blueSatelliteSprites.Count);
+
+        return colour == ObstacleColour.Blue
+            ? _blueSatelliteSprites[randomSpriteIndex]
+            : _yellowSatelliteSprites[randomSpriteIndex];
     }
     
     public Sprite GetRandomAsteroidFragmentSprite(ObstacleColour colour)
